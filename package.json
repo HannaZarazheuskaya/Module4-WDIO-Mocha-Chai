@@ -3,6 +3,7 @@
   "type": "module",
   "devDependencies": {
     "@wdio/cli": "^10.0.2",
+    "@wdio/html-reporter": "^10.2.0",
     "@wdio/local-runner": "^10.0.2",
     "@wdio/mocha-framework": "^10.0.1",
     "@wdio/spec-reporter": "^10.0.1",

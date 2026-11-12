@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Module 4 Task. JS Automation Frameworks: WDIO, Mocha, Chai
 
 
@@ -113,12 +112,12 @@ Here’s the list of actions which result in reduction of overall mark for a com
 
 ## Project structure
 ```
-[Task] JS Tools WDIO, JestMocha, Chai/
-├── tests/
-│   ├── pageobjects/    page objects
-│   │   └── components/ page object components
-│   ├── specs/          tests
-│   └── testdata/       credentials, address
+JS Tools WDIO, JestMocha, Chai/
+├── pageobjects/    page objects
+│   └── components/ page object components  
+├── reports/        test reports
+├── specs/          tests
+├── testdata/       credentials, address
 ├── .gitignore
 ├── package-lock.json
 ├── package.json
@@ -126,6 +125,7 @@ Here’s the list of actions which result in reduction of overall mark for a com
 └── wdio.conf.js
 ```
 * **pageobjects**: page classes with element getters and action methods. They extend the base page that keeps the path and has the `open()` method.
+* **reports**: directory where HTML reports are generated upon test execution.
 * **components**: components, such as header, sidebar, product cards.
 * **specs**: only the test flow and the assertions in three styles: assert, should and expect.
 * **testdata**: contains user and admin credentials.
@@ -140,6 +140,14 @@ Here’s the list of actions which result in reduction of overall mark for a com
 * **Assertions:** Chai v6.3.0 (should, assert, expect)
 * **Selectors:** CSS selectors, mainly `data-test` attributes
 * **Browsers**: Chrome, Microsoft Edge (parallel run)
+* **Reporters**: spec reporter(console output), html reporter (html report).
+
+## Test reports
+Two reporters were configured in the 'wdio.conf.js' file:
+
+* **Spec reporter**: display of test execution results in console right after the test run (passed/failed tests, their duration, errors).
+* **HTML reporter**: visual HTML report ('report.html') generated and saved in the './reports/html-reports' folder.
+
 
 ## Instructions to run 
 
@@ -166,6 +174,11 @@ To run tests in only one browser use:
 `npx wdio run ./wdio.conf.js --browser chrome`
 or
 `npx wdio run ./wdio.conf.js --browser MicrosoftEdge`
-=======
-# -Module-04-JS-Tools-WDIO-Jest-Mocha-Chai
->>>>>>> origin/main
+
+**5. View HTML report**
+
+1. **Display by default**: opens by in the default browser upon test run completion due to `showInBrowser: true` configuration in the 'wdio.conf.js' file.
+2. **Open manually**: open the `.reports/html-reports` folder and double-click the `report.html` file.
+3. **Open via CLI**: run the command in the terminal from the project root:
+* Windows: `start ./reports/html-reports/report.html`
+* Mac: `open ./reports/html-reports/report.html`
