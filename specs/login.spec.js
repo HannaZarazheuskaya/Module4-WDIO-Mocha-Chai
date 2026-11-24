@@ -1,4 +1,4 @@
-import { LoginPage, HomePage } from '../pageobjects/index.js';
+import { LoginPage, HomePage, AccountPage } from '../pageobjects/index.js';
 import users from '../testdata/users.json' with {type: 'json'};
 import { expect } from 'chai';
 
@@ -17,17 +17,10 @@ describe('Log in with valid credentials', () => {
         await LoginPage.open();
 
         await LoginPage.login(user.email, user.password);
-
-        await browser.waitUntil(async() => {
-            const currentUrl = await browser.getUrl();
-            return currentUrl.includes('/account');
-        }, {
-            timeout: 5000,
-            timeoutMsg: 'User was not redirected to My account page upon login'
-        });
+        await AccountPage.expectToBeOpened();
 
         const actualName = await HomePage.header.getUserName();
-
+        
         expect(actualName).to.equal(user.name);
     });
 });

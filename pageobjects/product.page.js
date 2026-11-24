@@ -35,6 +35,8 @@ class ProductDetailPage extends Page {
     }
 
     async increaseProdQuantity(count) {
+        await this.increaseQuantityBtn.waitForExist();
+        await this.increaseQuantityBtn.scrollIntoView();
         await this.increaseQuantityBtn.waitForClickable();
         const clicksRequired = count-1;        
         for (let i = 0; i < clicksRequired; i++) {

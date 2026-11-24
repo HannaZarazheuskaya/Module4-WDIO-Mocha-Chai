@@ -64,6 +64,7 @@ class Header {
     }
 
     async openCart() {
+        await this.cart.scrollIntoView();
         await this.cart.waitForClickable();
         await this.cart.click();
     }

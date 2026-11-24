@@ -18,6 +18,11 @@ class AccountPage extends Page{
         await this.favoritesBtn.click();
     }
 
+    async expectToBeOpened() {
+        await expect(browser).toHaveUrl(expect.stringContaining('/account'));
+        await expect(this.pageTitle).toBeDisplayed();
+    }
+
 }
 
 export default new AccountPage();
