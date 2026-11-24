@@ -13,7 +13,10 @@
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",
-    "test:cucumber": "wdio run ./wdio.cucumber.conf.js"
+    "test:cucumber": "wdio run ./wdio.cucumber.conf.js",
+    "test:cucumber:smoke": "wdio run ./wdio.cucumber.conf.js --cucumberOpts.tags=\"@smoke\"",
+    "test:cucumber:localization": "wdio run ./wdio.cucumber.conf.js --cucumberOpts.tags=\"@localization\""
+
   },
   "allowScripts": {
     "esbuild@0.28.2": true,

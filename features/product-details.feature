@@ -1,3 +1,4 @@
+@smoke
 Feature: Product details page
 
     Scenario: Add products to cart from the product details page

@@ -1,3 +1,4 @@
+@localization
 Feature: Localization
 
     Scenario: Change localization on the Home page to German

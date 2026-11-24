@@ -8,7 +8,7 @@ Feature: Cart and Checkout
         Then the cart should contain no products
         And the message "The cart is empty. Nothing to display." should be displayed
 
-
+    @smoke
     Scenario: Checkout with Cash on Delivery payment 
         Given the user is logged in
         And the user is on the home page
