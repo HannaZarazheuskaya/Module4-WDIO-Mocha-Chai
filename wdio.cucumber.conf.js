@@ -2,7 +2,6 @@ import { ReportAggregator } from '@wdio/html-reporter';
 let reportAggregator;
 
 export const config = {
-
   runner: 'local',
   specs: ['./features/**/*.feature'],
 
@@ -19,9 +18,10 @@ export const config = {
       maxInstances: 2,
       'ms:edgeOptions': {
         args: [
-          '--headless=new',
-          '--no-sandbox',
-          '--disable-gpu',
+            '--headless',
+            '--disable-gpu',
+            '--no-first-run',
+            '--no-default-browser-check'
         ],
       },
     },

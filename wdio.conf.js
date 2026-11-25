@@ -23,12 +23,10 @@ export const config = {
       maxInstances: 8,
       'ms:edgeOptions': {
         args: [
-            '--headless=new',
-            '--no-sandbox',
-            '--disable-dev-shm-usage',
+            '--headless',
             '--disable-gpu',
-            '--disable-extensions',
-            '--remote-debugging-port=0'
+            '--no-first-run',
+            '--no-default-browser-check'
         ]
       },
     },
