@@ -12,10 +12,23 @@ export const config = {
     {
       browserName: 'chrome',
       maxInstances: 2,
+      'goog:chromeOptions': {
+        args: ['--headless=new', '--no-sandbox', '--disable-dev-shm-usage'],
+      },
     },
+
     {
       browserName: 'MicrosoftEdge',
       maxInstances: 2,
+      'ms:edgeOptions': {
+        args: [
+          '--headless=new',
+          '--no-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-gpu',
+          `--user-data-dir=${path.join(os.tmpdir(), 'edge-profile-' + Date.now())}`,
+        ],
+      },
     },
   ],
 
