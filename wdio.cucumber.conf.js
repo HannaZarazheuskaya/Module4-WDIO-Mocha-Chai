@@ -1,3 +1,6 @@
+import { ReportAggregator } from '@wdio/html-reporter';
+let reportAggregator;
+
 export const config = {
 
   runner: 'local',
@@ -32,14 +35,25 @@ export const config = {
         filename: 'report-cucumber.html',
         reportTitle: 'WDIO Cucumber Test Report',
         showInBrowser: false,
-      }
-    ]
-  
+        useOnAfterCommandForScreenshot: false,
+      },
+    ],
   ],
 
   cucumberOpts: {
     import: ['./features/step-definitions/**/*.js'],
     timeout: 120000,
+  },
+
+  onPrepare: function (_config, capabilities) {
+    reportAggregator = new ReportAggregator({
+      outputDir: './reports/cucumber-reports/',
+      filename: 'cucumber-report.html',
+      reportTitle: 'WDIO Cucumber Test Report',
+      collapseTests: true,
+      showInBrowser: false,
+    });
+    reportAggregator.clean();
   },
 
   before: async function () {
@@ -49,5 +63,9 @@ export const config = {
     chai.should();
 
     await browser.setWindowSize(1440, 900);
+  },
+
+  onComplete: async function () {
+    await reportAggregator.createReport();
   },
 };
