@@ -10,31 +10,28 @@ pipeline {
     }
 
     stages {
-        stage('Checkout and install') {
+        stage('Install dependencies') {
             steps {
-                git branch: 'setup-jenkins', url: 'https://github.com/HannaZarazheuskaya/Module4-WDIO-Mocha-Chai'
                 bat 'npm ci'
             }
         }
 
         stage('Run eslint and prettier') {
             steps {
-                bat 'npm run lint'
+                bat 'npm run lint:cucumber'
                 bat 'npm run format'
             }
         }
 
         stage('Run tests') {
-            parallel {
+            stages {
                 stage('Job 1: Cucumber tests') {
                     steps {
                         bat 'npm run test:cucumber'
                     }
                 }
             }
-        }
-
-                
+        }                
     }
 
     post {
