@@ -3,20 +3,30 @@
   "type": "module",
   "devDependencies": {
     "@cucumber/cucumber": "^13.3.0",
+    "@eslint/js": "^10.0.1",
     "@wdio/cli": "^10.0.2",
     "@wdio/cucumber-framework": "^10.2.0",
     "@wdio/html-reporter": "^10.2.0",
     "@wdio/local-runner": "^10.0.2",
     "@wdio/mocha-framework": "^10.0.1",
     "@wdio/spec-reporter": "^10.0.1",
-    "chai": "^6.3.0"
+    "chai": "^6.3.0",
+    "eslint": "^10.15.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-wdio": "^10.2.0",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1"
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",
     "test:cucumber": "wdio run ./wdio.cucumber.conf.js",
     "test:cucumber:smoke": "wdio run ./wdio.cucumber.conf.js --cucumberOpts.tags=\"@smoke\"",
-    "test:cucumber:localization": "wdio run ./wdio.cucumber.conf.js --cucumberOpts.tags=\"@localization\""
-
+    "test:cucumber:localization": "wdio run ./wdio.cucumber.conf.js --cucumberOpts.tags=\"@localization\"",
+    "lint": "eslint .",
+    "lint:specs": "eslint \"**/specs/**/*.spec.js\"",
+    "lint:cucumber": "eslint \"features/step-definitions/**/*.js\"",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ."
   },
   "allowScripts": {
     "esbuild@0.28.2": true,
