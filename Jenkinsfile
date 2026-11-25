@@ -39,7 +39,7 @@ pipeline {
             archiveArtifacts artifacts: 'reports/**', allowEmptyArchive: true
             publishHTML(target: [
                 reportDir: 'reports/cucumber-reports',
-                reportFiles: 'cucumber-report.html',
+                reportFiles: 'report-cucumber.html',
                 reportName: 'WDIO Cucumber Test Report'
             ])
         }

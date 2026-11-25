@@ -45,7 +45,7 @@ export const config = {
     timeout: 120000,
   },
 
-  onPrepare: function (_config, capabilities) {
+  onPrepare: function (_config, _capabilities) {
     reportAggregator = new ReportAggregator({
       outputDir: './reports/cucumber-reports/',
       filename: 'cucumber-report.html',
