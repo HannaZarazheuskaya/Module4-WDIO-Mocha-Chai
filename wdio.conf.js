@@ -21,6 +21,16 @@ export const config = {
     {
       browserName: 'MicrosoftEdge',
       maxInstances: 8,
+      'ms:edgeOptions': {
+        args: [
+            '--headless=new',
+            '--no-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--disable-extensions',
+            '--remote-debugging-port=0'
+        ]
+      },
     },
   ],
 
