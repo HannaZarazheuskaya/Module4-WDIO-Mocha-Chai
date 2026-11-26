@@ -12,19 +12,6 @@ export const config = {
       browserName: 'chrome',
       maxInstances: 2,
     },
-
-    {
-      browserName: 'MicrosoftEdge',
-      maxInstances: 2,
-      'ms:edgeOptions': {
-        args: [
-            '--headless',
-            '--disable-gpu',
-            '--no-first-run',
-            '--no-default-browser-check'
-        ],
-      },
-    },
   ],
 
   logLevel: 'error',

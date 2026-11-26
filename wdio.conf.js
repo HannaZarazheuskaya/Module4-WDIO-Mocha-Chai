@@ -2,15 +2,9 @@ import { ReportAggregator } from '@wdio/html-reporter';
 let reportAggregator;
 
 export const config = {
-  // Runner Configuration
   runner: 'local',
-
-  // ==================
-  // Specify Test Files
-  // ==================
   specs: ['./specs/**/*.spec.js'],
 
-  // Capabilities
   maxInstances: 8,
 
   capabilities: [
@@ -21,42 +15,19 @@ export const config = {
     {
       browserName: 'MicrosoftEdge',
       maxInstances: 8,
-      'ms:edgeOptions': {
-        args: [
-            '--headless',
-            '--disable-gpu',
-            '--no-first-run',
-            '--no-default-browser-check'
-        ]
-      },
     },
   ],
 
-  // ===================
-  // Test Configurations
-  // ===================
-  // Level of logging verbosity: trace | debug | info | warn | error | silent
   logLevel: 'error',
-
-  // Set a base URL in order to shorten url command calls.
+  
   baseUrl: 'https://practicesoftwaretesting.com/',
 
-  // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
-
-  // Default timeout in milliseconds for request
-  // if browser driver or grid doesn't send response
   connectionRetryTimeout: 120000,
-
-  // Default request retries count
   connectionRetryCount: 3,
 
-  // Test runner services
-
-  // Framework you want to run your specs with.
   framework: 'mocha',
 
-  // Test reporter for stdout.
   reporters: [
     'spec',
     [
@@ -70,7 +41,6 @@ export const config = {
     ],
   ],
 
-  // Options to be passed to Mocha.
   mochaOpts: {
     ui: 'bdd',
     timeout: 120000,
@@ -88,7 +58,7 @@ export const config = {
    * @param {object} config wdio configuration object
    * @param {Array.<Object>} capabilities list of capabilities details
    */
-  onPrepare: function (_config, capabilities) {
+  onPrepare: function (config, capabilities) {
     reportAggregator = new ReportAggregator({
       outputDir: './reports/html-reports/',
       filename: 'report.html',
