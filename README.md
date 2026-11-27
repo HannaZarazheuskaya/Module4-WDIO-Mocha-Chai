@@ -1,7 +1,7 @@
 # Module 4 Task. JS Automation Frameworks: WDIO, Mocha, Chai
 
-
 ## Task Description
+
 <details>
 <summary><b> Please click here to expand the full task</b></summary>
 
@@ -16,12 +16,13 @@ For this practical task should be automated written in Module 2 scenarios
 Assessment criteria (pass rate is 70%)
 
 Here’s the list of actions which result in reduction of overall mark for a completed task:
+
 1. WDIO, Mocha, Chai weren’t set up within Test Automation Framework (-70%)
 2. One mentioned interface isn’t used in tests (1 interface = -10%)
+
 </details>
 
-
-## Scenarios Under Test 
+## Scenarios Under Test
 
 <details>
 <summary><b> Please click here to expand the scenarios</b></summary>
@@ -36,16 +37,16 @@ Here’s the list of actions which result in reduction of overall mark for a com
 ### Scenario 2: Add products to cart from the product details page
 
     Given the user is on the home page
-    When the user views a product detail page 
+    When the user views a product detail page
     And the user adds 3 items of this product to cart
     Then the cart icon should display 3 items
     When user opens cart
     Then the cart should contain 3 items of this product
 
 ### Scenario 3: Remove a product from the shopping cart
-    
-    Background: 
-    
+
+    Background:
+
         Given the user is on the home page
         And the user opens a product detail page
         And the user adds the product to cart
@@ -53,14 +54,14 @@ Here’s the list of actions which result in reduction of overall mark for a com
 
     Scenario: Remove a product from the shopping cart
 
-        Given the user is on the cart page 
+        Given the user is on the cart page
         When the user removes the product from the cart
         Then the cart should contain no products
         And the message “The cart is empty. Nothing to display.” should be displayed
 
 ### Scenario 4: Change localization to German
 
-    Given the user is on the home page  
+    Given the user is on the home page
     When the user switches the language to German
     Then the user should remain on the same page
     And the labels should be translated into German
@@ -74,7 +75,7 @@ Here’s the list of actions which result in reduction of overall mark for a com
 
 ### Scenario 6: Filter products by category and price range
 
-    Given the user is on the home page 
+    Given the user is on the home page
     When the user filters products by price range from 0 to 10
     And the user selects the first category
     Then all displayed products should belong to the selected category
@@ -83,7 +84,7 @@ Here’s the list of actions which result in reduction of overall mark for a com
 ### Scenario 7: Add a product to Favorites
 
     Background:
-    
+
         Given the user is logged in
 
     Scenario: Add a product to Favorites
@@ -95,26 +96,28 @@ Here’s the list of actions which result in reduction of overall mark for a com
 
 ### Scenario 8: Checkout with 'Cash on Delivery' payment
 
-    Background: 
-    
+    Background:
+
         Given the user is logged in
         And the user has two products in the cart
         And the user proceeds to checkout
         And the user enters valid billing address
 
     Scenario: Checkout with 'Cash on Delivery' payment
-    
+
         Given the user is on the payment page
         When the user selects “Cash on Delivery” payment option
         And the user confirms payment
-        Then the order confirmation with the invoice number should be displayed 
+        Then the order confirmation with the invoice number should be displayed
+
 </details>
 
 ## Project structure
+
 ```
 JS Tools WDIO, JestMocha, Chai/
 ├── pageobjects/    page objects
-│   └── components/ page object components  
+│   └── components/ page object components
 ├── reports/        test reports
 ├── specs/          tests
 ├── testdata/       credentials, address
@@ -124,34 +127,35 @@ JS Tools WDIO, JestMocha, Chai/
 ├── README.md
 └── wdio.conf.js
 ```
-* **pageobjects**: page classes with element getters and action methods. They extend the base page that keeps the path and has the `open()` method.
-* **reports**: directory where HTML reports are generated upon test execution.
-* **components**: components, such as header, sidebar, product cards.
-* **specs**: only the test flow and the assertions in three styles: assert, should and expect.
-* **testdata**: contains user and admin credentials.
-* **wdio.conf.js**: base url, browsers' capabilities, timeouts, specs.
 
+- **pageobjects**: page classes with element getters and action methods. They extend the base page that keeps the path and has the `open()` method.
+- **reports**: directory where HTML reports are generated upon test execution.
+- **components**: components, such as header, sidebar, product cards.
+- **specs**: only the test flow and the assertions in three styles: assert, should and expect.
+- **testdata**: contains user and admin credentials.
+- **wdio.conf.js**: base url, browsers' capabilities, timeouts, specs.
 
-## Tools 
-* **Core Framework:** WebdriverIO v10.0.2
-* **Design Pattern:** Page Object Model
-* **Test Runner:** Local Runner
-* **Test Framework:** Mocha v10.0.1
-* **Assertions:** Chai v6.3.0 (should, assert, expect)
-* **Selectors:** CSS selectors, mainly `data-test` attributes
-* **Browsers**: Chrome, Microsoft Edge (parallel run)
-* **Reporters**: spec reporter(console output), html reporter (html report).
+## Tools
+
+- **Core Framework:** WebdriverIO v10.0.2
+- **Design Pattern:** Page Object Model
+- **Test Runner:** Local Runner
+- **Test Framework:** Mocha v10.0.1
+- **Assertions:** Chai v6.3.0 (should, assert, expect)
+- **Selectors:** CSS selectors, mainly `data-test` attributes
+- **Browsers**: Chrome, Microsoft Edge (parallel run)
+- **Reporters**: spec reporter(console output), html reporter (html report).
 
 ## Test reports
+
 Two reporters were configured in the 'wdio.conf.js' file:
 
-* **Spec reporter**: display of test execution results in console right after the test run (passed/failed tests, their duration, errors).
-* **HTML reporter**: visual HTML report ('report.html') generated and saved in the './reports/html-reports' folder.
+- **Spec reporter**: display of test execution results in console right after the test run (passed/failed tests, their duration, errors).
+- **HTML reporter**: visual HTML report ('report.html') generated and saved in the './reports/html-reports' folder.
 
+## Instructions to run
 
-## Instructions to run 
-
-As a prerequisite, you need to have Node.js, Chrome and Edge installed. 
+As a prerequisite, you need to have Node.js, Chrome and Edge installed.
 
 **1. Install the dependencies**
 
@@ -180,5 +184,6 @@ or
 1. **Display by default**: opens by in the default browser upon test run completion due to `showInBrowser: true` configuration in the 'wdio.conf.js' file.
 2. **Open manually**: open the `.reports/html-reports` folder and double-click the `report.html` file.
 3. **Open via CLI**: run the command in the terminal from the project root:
-* Windows: `start ./reports/html-reports/report.html`
-* Mac: `open ./reports/html-reports/report.html`
+
+- Windows: `start ./reports/html-reports/report.html`
+- Mac: `open ./reports/html-reports/report.html`

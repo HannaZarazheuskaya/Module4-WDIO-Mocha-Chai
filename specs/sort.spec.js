@@ -1,5 +1,5 @@
-import { should } from "chai";
-import { HomePage } from "../pageobjects/index.js";
+import { should } from 'chai';
+import { HomePage } from '../pageobjects/index.js';
 should();
 
 // #5 Feature: Sorting
@@ -10,27 +10,26 @@ should();
 //     And the first product should have the highest price
 
 describe('Sort products by price from High to Low', () => {
+  beforeEach(async () => {
+    await HomePage.open();
+  });
 
-    beforeEach(async() => {
-        await HomePage.open();
-    });
+  it('Sort products by price from High to Low as a Guest', async () => {
+    await HomePage.sidebar.sortBy('price,desc');
 
-    it('Sort products by price from High to Low as a Guest', async() => {
-        await HomePage.sidebar.sortBy('price,desc');
+    const prodCards = await HomePage.productCard.allCards;
+    const prodPrices = [];
 
-        const prodCards = await HomePage.productCard.allCards;
-        const prodPrices = []; 
+    for (let i = 0; i < prodCards.length; i++) {
+      prodPrices.push(await HomePage.productCard.getPrice(prodCards[i]));
+    }
 
-        for (let i = 0; i < prodCards.length; i++) {
-            prodPrices.push(await HomePage.productCard.getPrice(prodCards[i]));
-        }
-        
-        prodPrices.length.should.be.above(0);
+    prodPrices.length.should.be.above(0);
 
-        const expectedPricesSorted = [...prodPrices].sort((a, b) => b - a);
-        prodPrices.should.deep.equal(expectedPricesSorted);
+    const expectedPricesSorted = [...prodPrices].sort((a, b) => b - a);
+    prodPrices.should.deep.equal(expectedPricesSorted);
 
-        const maxPrice = Math.max(...prodPrices);
-        prodPrices[0].should.equal(maxPrice);
-    });
+    const maxPrice = Math.max(...prodPrices);
+    prodPrices[0].should.equal(maxPrice);
+  });
 });
